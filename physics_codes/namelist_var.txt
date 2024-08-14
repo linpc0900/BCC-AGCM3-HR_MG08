@@ -1,0 +1,5 @@
+fincl1   = 'MIUICE', 'PRECL', 'PRECC','PRECT', 'UW_tke', 'WSUB', 'EFFICE', 'T', 'CLOUD', 
+         'Mufallni', 'Mufallqi', 'MuR3_fall', 'Mufallpro', 'MuR3_before_fall', 'Mubeforefallpro', 'MuR3_after_fall', 'Muafterfallpro',
+         'Mufqprci', 'Mufnprci', 'FREZICE', 'hxepsi', 'hxdvi', 'INhet', 'INhom', 'INice', 'INFrehom', 'INFrehet', 'INFreIN',
+         'ICINC', 'ICWNC', 'ICIMR', 'ICWMR', 'CME', 'FICE', 'MPDT', 'prci_out', 'prai_out', 'psacws_out', 'bergs_out', 'prds_out', 'pracs_out',
+         'mnuccr_out'
