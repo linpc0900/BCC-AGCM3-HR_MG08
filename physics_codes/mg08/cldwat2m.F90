@@ -1454,7 +1454,7 @@ subroutine mmicro_pcond (lchnk,ncol,deltatin,tn,ttend,qn,qtend,cwtend,qc,qi, &
 !	dumgam4(:,:) = gamma(miuice+4._r8)
 
 	zi_init(:,:)     = zi(:,:)
-!cluhx
+!cluhx_zqy++
 	dvi(:,:)=0._r8
 	epsli(:,:)=0._r8
 	if (ice_miu) then
@@ -1462,15 +1462,17 @@ subroutine mmicro_pcond (lchnk,ncol,deltatin,tn,ttend,qn,qtend,cwtend,qc,qi, &
 	  do k=1,pver
 		do i=1,ncol
 		! limit in-cloud values to 0.005 kg/kg	
-		dvi(i,k)=(qi(i,k)/ni(i,k))**(1.0_r8/3.0_r8)
-		dvi(i,k)=dvi(i,k)*1.e3_r8 !clu_zqy+
+		dvi(i,k)=((3.0_r8*qi(i,k)/4.0_r8*pi*rhoi*ni(i,k))**(1.0_r8/3.0_r8)) *2.0_r8 !unit:m
+		dvi(i,k)=dvi(i,k)*1.e3_r8 !unit:mm
 		dvi(i,k)=max(dvi(i,k),0.0_r8)
-		dvi(i,k)=min(dvi(i,k),0.175_r8)
+		dvi(i,k)=min(dvi(i,k),0.2_r8)
 		epsli(i,k)=(-48.26_r8)*dvi(i,k)**3.00_r8+0.56_r8
 		miuice(i,k)=1.0_r8/(epsli(i,k)**2.0_r8)-1.0_r8
 		end do
 	  end do
 		hxdvi = dvi
+		miuice = max(miuice,0._r8)
+		miuice = min(miuice,10._r8)
 	else 
 	   miuice(i,k)=0._r8
 	end if
